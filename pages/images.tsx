@@ -11,7 +11,7 @@ const ImageSequencePage: NextPage = () => {
       favicon="🎞️"
       title="Image Sequence to Hologram"
       subtitle="🎞️ Images"
-      processors={[ImageSequenceProcessor, LightFieldFocusEditor, LightFieldCropEditor]}
+      processors={[ImageSequenceProcessor, LightFieldCropEditor, LightFieldFocusEditor]}
     />
   );
 };

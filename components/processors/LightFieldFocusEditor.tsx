@@ -58,6 +58,17 @@ export const LightFieldFocusEditor: SequenceProcessorInfo = ({ activated, onDone
           value={adjustedFocus}
           onChange={onFocusChange}
         />
+        <input
+          type="number"
+          className="number"
+          min="-0.025"
+          max="0.025"
+          step="0.0001"
+          value={adjustedFocus}
+          onChange={onFocusChange}
+          disabled={true}
+          readOnly={true}
+        />
         <IconButton
           tooltip="Confirm"
           iconType="tick"

@@ -25,6 +25,8 @@ export const LightFieldCropEditor: SequenceProcessorInfo = ({ activated, onDone 
 
   if (!activated) return null;
 
+  const sourceAspectRatio = Math.floor((frames?.[0].width! / frames?.[0].height!) * 1000.0) / 1000.0;
+
   return (
     <div className="flex flex-col items-center md:items-start gap-2 max-w-full">
       <h2>Crop</h2>
@@ -33,7 +35,7 @@ export const LightFieldCropEditor: SequenceProcessorInfo = ({ activated, onDone 
       <div className="relative max-w-full">
         <Cropper
           source={frames?.[0]}
-          targetRatio={ASPECT_RATIO}
+          targetRatio={sourceAspectRatio}
           crop={cropRegion}
           onChange={setCropRegion}
         >
