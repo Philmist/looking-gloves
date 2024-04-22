@@ -24,6 +24,7 @@ const HomePage: NextPage = () => {
         <h2 className="text-center mt-0">{PRODUCT_DESC_SHORT}</h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {/*
           <PageCard
             title="🔫 Luma NeRF"
             content={
@@ -36,6 +37,7 @@ const HomePage: NextPage = () => {
             thumbnail="/assets/cover-luma.jpg"
             alert="❗ Light field output from Luma have curved camera path, which may lead to a toe-in/curve effect on the Looking Glass."
           />
+          */}
 
           <PageCard
             title="🎥 Video"
