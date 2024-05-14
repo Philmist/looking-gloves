@@ -11,7 +11,7 @@ const maxFrameWidth = 1000;
 
 export const ImageSequenceProcessor: SequenceProcessorInfo = ({ activated, onDone }) => {
   const { updateProgress } = useProgress();
-  const { setSourceFrames, setFrames, setEnforceOrder } = useSequence();
+  const { setSourceFrames, setFrames, setEnforceOrder, setDirectoryName } = useSequence();
 
   // input element to select video file
   const inputRef = useRef<HTMLInputElement>(null);
@@ -39,11 +39,15 @@ export const ImageSequenceProcessor: SequenceProcessorInfo = ({ activated, onDon
       updateProgress(i / images.length, 'Parsing image sequence ...');
     }
 
+    const dirRegExp = new RegExp("^(.+)/.+");
+    const dirName = dirRegExp.exec(images[0].webkitRelativePath)?.[1];
+
     setSourceFrames(frames);
     setFrames(frames);
     setEnforceOrder(true);
     updateProgress(1);
     setProcessing(false);
+    setDirectoryName(dirName);
     onDone();
   };
 
@@ -76,6 +80,10 @@ export const ImageSequenceProcessor: SequenceProcessorInfo = ({ activated, onDon
         accept="image/*"
         disabled={processing}
         multiple
+        // @ts-ignore: directory is not in whitelist
+        directory=""
+        // @ts-ignore: webkitdirectory is not in whitelist
+        webkitdirectory=""
         className="file-input h-auto w-full sm:w-96 mt-2"
         onChange={(e) => setFiles(e.target.files)}
       />

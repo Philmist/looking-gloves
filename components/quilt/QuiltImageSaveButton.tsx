@@ -15,7 +15,7 @@ export interface QuiltImageSaveButtonProps {
 export const QuiltImageSaveButton: FC<QuiltImageSaveButtonProps> = ({ quiltImage }) => {
   const [pending, setPending] = useState(false);
 
-  const { frames } = useSequence();
+  const { frames, directoryName } = useSequence();
   const numberOfFrames = frames?.length || 0;
 
   const _saveQuiltImage = debounce(() => {
@@ -27,7 +27,7 @@ export const QuiltImageSaveButton: FC<QuiltImageSaveButtonProps> = ({ quiltImage
     const frameWidth = quiltImage.width / COLS;
     const frameHeight = quiltImage.height / rows;
     const aspectRatio = frameWidth / frameHeight;
-    const name = dayjs().format('YYYY-MM-DD_HH-mm-ss');
+    const name = directoryName ? directoryName : dayjs().format('YYYY-MM-DD_HH-mm-ss');
     const filename = `${name}_qs${COLS}x${rows}a${aspectRatio.toFixed(2)}.jpg`;
 
     const url = canvasToJpeg(quiltImage);

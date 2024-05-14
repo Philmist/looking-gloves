@@ -32,6 +32,11 @@ const cropRegionAtom = atom<Crop | undefined>({
   default: undefined,
 });
 
+const directoryNameAtom = atom<string | undefined>({
+  key: 'processors.directoryName',
+  default: undefined,
+});
+
 export const focusScale = 10;
 
 export const useSequence = () => {
@@ -41,6 +46,7 @@ export const useSequence = () => {
   const [enforceOrder, setEnforceOrder] = useRecoilState(enforceOrderAtom);
   const [range, setRange] = useRecoilState(rangeAtom);
   const [cropRegion, setCropRegion] = useRecoilState(cropRegionAtom);
+  const [directoryName, setDirectoryName] = useRecoilState(directoryNameAtom);
 
   const reset = () => {
     setSourceFrames(undefined);
@@ -49,6 +55,7 @@ export const useSequence = () => {
     setEnforceOrder(false);
     setRange(undefined);
     setCropRegion(undefined);
+    setDirectoryName(undefined);
   };
 
   const setFocusValue = (value: number) => {
@@ -86,6 +93,9 @@ export const useSequence = () => {
 
     cropRegion,
     setCropRegion,
+
+    directoryName,
+    setDirectoryName,
 
     setEnforceOrder,
     reset,
